@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa0cc3e9eb06cd418f4bd6965e5e677, type: 3}
+  m_Name: Seba
+  m_EditorClassIdentifier: 
+  uniqueID: edeb1a17-aa00-4f2c-47b6-71307300048a
+  cardName: Seba
+  currentHealth: 8
+  attackPower: 2
+  manaCost: 5
+  actionDescription: Dobranie kart (2)
+  cardLore: "Dow\xF3dca Bandyt\xF3w"
+  characterSprite: {fileID: 21300000, guid: 343638d6e30b8c6409d065f11785c15c, type: 3}
+  bgSprite: {fileID: 21300000, guid: 1aec4ea55e483344eb21c36b5dcabfd8, type: 3}
+  dropRate: 25
+  hasHealingAbility: 0
+  healingPower: 0
+  hasAutoHealAbility: 0
+  autoHealPower: 0
+  hasAddHealthAbility: 0
+  healAmount: 0
+  hasAddManaAbility: 0
+  manaAmount: 0
+  hasDrawCardsAbility: 1
+  cardsToDraw: 2
+  hasIncreaseAttackAbility: 0
+  attackIncreaseAmount: 0
+  hasStunAbility: 0
+  stunTurns: 0
+  hasInvincibilityAbility: 0
+  invincibilityTurns: 0

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa0cc3e9eb06cd418f4bd6965e5e677, type: 3}
+  m_Name: Kukurydziany Johny
+  m_EditorClassIdentifier: 
+  uniqueID: 0f0cd963-6c44-4c35-b1a2-533eb13d14c9
+  cardName: Kukurydziany Johny
+  currentHealth: 1
+  attackPower: 2
+  manaCost: 1
+  actionDescription: Brak
+  cardLore: Johny
+  characterSprite: {fileID: 21300000, guid: 8d7313b1f5178b94f94feeb17da99a10, type: 3}
+  bgSprite: {fileID: 21300000, guid: 1aec4ea55e483344eb21c36b5dcabfd8, type: 3}
+  dropRate: 35
+  hasHealingAbility: 0
+  healingPower: 0
+  hasAutoHealAbility: 0
+  autoHealPower: 0
+  hasAddHealthAbility: 0
+  healAmount: 0
+  hasAddManaAbility: 0
+  manaAmount: 0
+  hasDrawCardsAbility: 0
+  cardsToDraw: 0
+  hasIncreaseAttackAbility: 0
+  attackIncreaseAmount: 0
+  hasStunAbility: 0
+  stunTurns: 0
+  hasInvincibilityAbility: 0
+  invincibilityTurns: 0

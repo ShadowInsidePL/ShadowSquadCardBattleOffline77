@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa0cc3e9eb06cd418f4bd6965e5e677, type: 3}
+  m_Name: Liver Demon
+  m_EditorClassIdentifier: 
+  uniqueID: 05d3cdf7-53ef-4442-a87d-fa6c39abc228
+  cardName: Liver Demon
+  currentHealth: 6
+  attackPower: 4
+  manaCost: 4
+  actionDescription: "Stunuje wroga na 1 tur\u0119"
+  cardLore: "P\xF3\u0142-cz\u0142owiek P\xF3\u0142-Demon"
+  characterSprite: {fileID: 21300000, guid: 08574a1f59d8ec7419db86267765b271, type: 3}
+  bgSprite: {fileID: 21300000, guid: 1aec4ea55e483344eb21c36b5dcabfd8, type: 3}
+  dropRate: 1
+  hasHealingAbility: 0
+  healingPower: 0
+  hasAutoHealAbility: 0
+  autoHealPower: 0
+  hasAddHealthAbility: 0
+  healAmount: 0
+  hasAddManaAbility: 0
+  manaAmount: 0
+  hasDrawCardsAbility: 0
+  cardsToDraw: 0
+  hasIncreaseAttackAbility: 0
+  attackIncreaseAmount: 0
+  hasStunAbility: 1
+  stunTurns: 4
+  hasInvincibilityAbility: 0
+  invincibilityTurns: 0
