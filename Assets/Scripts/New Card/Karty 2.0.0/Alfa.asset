@@ -34,7 +34,7 @@ MonoBehaviour:
   hasDrawCardsAbility: 0
   cardsToDraw: 0
   hasIncreaseAttackAbility: 0
-  attackIncreaseAmount: 0
+  attackIncreaseAmount: 1
   hasStunAbility: 0
   stunTurns: 0
   hasInvincibilityAbility: 0

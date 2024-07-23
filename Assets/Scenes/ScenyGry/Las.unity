@@ -510,7 +510,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: Menu
   requiredPreviousLevel: 
-  notificationText: {fileID: 0}
+  notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 0
 --- !u!114 &630871153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -873,6 +875,8 @@ MonoBehaviour:
   levelToLoad: Walka6
   requiredPreviousLevel: Walka5
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!1001 &773228075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1053,6 +1057,8 @@ MonoBehaviour:
   levelToLoad: Walka10
   requiredPreviousLevel: Walka9
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!1 &778032476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,6 +1281,8 @@ MonoBehaviour:
   levelToLoad: Walka9
   requiredPreviousLevel: Walka8
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!1001 &856844161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1449,6 +1457,8 @@ MonoBehaviour:
   levelToLoad: Walka7
   requiredPreviousLevel: Walka6
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!1001 &957206913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1623,6 +1633,8 @@ MonoBehaviour:
   levelToLoad: Walka5
   requiredPreviousLevel: Walka4
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,6 +1946,8 @@ MonoBehaviour:
   levelToLoad: Walka8
   requiredPreviousLevel: Walka7
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!1 &1049919365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1934048417738405292, guid: 99d1297b368d2804aa6c1ca0d155c556,
@@ -2114,6 +2128,8 @@ MonoBehaviour:
   levelToLoad: Walka3
   requiredPreviousLevel: Walka2
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!1001 &1155424163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2828,6 +2844,8 @@ MonoBehaviour:
   levelToLoad: Walka1
   requiredPreviousLevel: 
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!114 &1772647167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3015,6 +3033,8 @@ MonoBehaviour:
   levelToLoad: Walka4
   requiredPreviousLevel: Walka3
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!224 &1853335829 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7065923771000792160, guid: 99d1297b368d2804aa6c1ca0d155c556,
@@ -3036,6 +3056,8 @@ MonoBehaviour:
   levelToLoad: Walka2
   requiredPreviousLevel: Walka1
   notificationText: {fileID: 1677982119}
+  minimumDeckSize: 5
+  checkDeckSize: 1
 --- !u!114 &1853335838
 MonoBehaviour:
   m_ObjectHideFlags: 0

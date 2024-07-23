@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 public class BattleController : MonoBehaviour
 {
     public static BattleController instance;
-    public int winCoinsReward; // Liczba monet za wygraną
-    public string currentLevelName; // Nazwa aktualnego poziomu
+    public int winCoinsReward;
+    public string currentLevelName;
 
     private void Awake()
     {
@@ -17,8 +17,8 @@ public class BattleController : MonoBehaviour
     public int playerMana, enemyMana;
     public int playerHealth, enemyHealth;
     private int currentPlayerMaxMana, currentEnemyMaxMana;
-    private int playerMaxHealth = 20; // Maksymalne zdrowie gracza
-    private int enemyMaxHealth = 20; // Maksymalne zdrowie przeciwnika
+    private int playerMaxHealth = 20;
+    private int enemyMaxHealth = 20;
 
     public enum TurnOrder { playerActive, playerCardAttacks, enemyActive, enemyCardAttacks }
     public TurnOrder currentPhase;
@@ -33,31 +33,31 @@ public class BattleController : MonoBehaviour
     [Range(0f, 1f)]
     public float playerFirstChance = .5f;
 
-   void Start()
-{
-    Debug.Log("BattleController Start method called.");
-    currentPlayerMaxMana = startingMana;
-    FillPlayerMana();
-
-    playerHealth = playerMaxHealth; // Inicjalizacja zdrowia gracza
-    enemyHealth = enemyMaxHealth; // Inicjalizacja zdrowia przeciwnika
-
-    Debug.Log("Drawing initial cards.");
-    DeckController.instance.DrawMultipleCards(startingCardsAmount);
-    UIController.instance.SetPlayerHealthText(playerHealth);
-    UIController.instance.SetEnemyHealthText(enemyHealth);
-
-    currentEnemyMaxMana = startingMana;
-    FillEnemyMana();
-
-    if (Random.value >= playerFirstChance)
+    void Start()
     {
-        currentPhase = TurnOrder.playerCardAttacks;
-        AdvanceTurn();
-    }
+        Debug.Log("BattleController Start method called.");
+        currentPlayerMaxMana = startingMana;
+        FillPlayerMana();
 
-    AudioManager.instance.PlayBGM();
-}
+        playerHealth = playerMaxHealth;
+        enemyHealth = enemyMaxHealth;
+
+        Debug.Log("Drawing initial cards.");
+        DeckController.instance.DrawMultipleCards(startingCardsAmount);
+        UIController.instance.SetPlayerHealthText(playerHealth);
+        UIController.instance.SetEnemyHealthText(enemyHealth);
+
+        currentEnemyMaxMana = startingMana;
+        FillEnemyMana();
+
+        if (Random.value >= playerFirstChance)
+        {
+            currentPhase = TurnOrder.playerCardAttacks;
+            AdvanceTurn();
+        }
+
+        AudioManager.instance.PlayBGM();
+    }
 
     void Update()
     {
@@ -66,7 +66,6 @@ public class BattleController : MonoBehaviour
             AdvanceTurn();
         }
 
-        // Debugowanie wartości zdrowia w czasie rzeczywistym
         Debug.Log("Player Health: " + playerHealth + " / " + playerMaxHealth);
         Debug.Log("Enemy Health: " + enemyHealth + " / " + enemyMaxHealth);
     }
@@ -146,6 +145,9 @@ public class BattleController : MonoBehaviour
                 currentPhase = 0;
             }
 
+            // Zaktualizuj status oszołomienia przed rozpoczęciem nowej tury
+            UpdateStunStatus();
+
             StartTurn();
 
             switch (currentPhase)
@@ -188,7 +190,7 @@ public class BattleController : MonoBehaviour
     {
         Debug.Log("StartTurn called. Current phase: " + currentPhase);
 
-        UpdateInvincibilityStatus(); // Dodaj to wywołanie
+        UpdateInvincibilityStatus();
 
         if (currentPhase == TurnOrder.playerActive)
         {
@@ -199,6 +201,15 @@ public class BattleController : MonoBehaviour
         {
             AutoHealEnemyCards();
             Debug.Log("Enemy cards are healing.");
+        }
+    }
+
+    private void UpdateStunStatus()
+    {
+        Card[] allCards = FindObjectsOfType<Card>();
+        foreach (Card card in allCards)
+        {
+            card.UpdateStunStatus();
         }
     }
 
@@ -217,7 +228,7 @@ public class BattleController : MonoBehaviour
         Card[] playerCards = FindObjectsOfType<Card>();
         foreach (Card card in playerCards)
         {
-            if (card.isPlayer && card.hasAutoHealAbility && !card.inHand && card.assignedPlace != null) // Sprawdzamy, czy karta nie jest w ręce i jest na arenie
+            if (card.isPlayer && card.hasAutoHealAbility && !card.inHand && card.assignedPlace != null)
             {
                 Debug.Log("Auto-healing card: " + card.cardSO.cardName);
                 card.AutoHeal();
@@ -231,7 +242,7 @@ public class BattleController : MonoBehaviour
         Card[] enemyCards = FindObjectsOfType<Card>();
         foreach (Card card in enemyCards)
         {
-            if (!card.isPlayer && card.hasAutoHealAbility && !card.inHand && card.assignedPlace != null) // Sprawdzamy, czy karta jest na arenie
+            if (!card.isPlayer && card.hasAutoHealAbility && !card.inHand && card.assignedPlace != null)
             {
                 Debug.Log("Auto-healing enemy card: " + card.cardSO.cardName);
                 card.AutoHeal();
@@ -293,41 +304,40 @@ public class BattleController : MonoBehaviour
         }
     }
 
- void EndBattle()
-{
-    battleEnded = true;
-
-    HandController.instance.EmptyHand();
-
-    if (enemyHealth <= 0)
+    void EndBattle()
     {
-        UIController.instance.battleResultText.text = "You won!";
-        foreach (CardPlacePoint point in CardPointController.instance.enemyCardPoints)
+        battleEnded = true;
+
+        HandController.instance.EmptyHand();
+
+        if (enemyHealth <= 0)
         {
-            if (point.activeCard != null)
+            UIController.instance.battleResultText.text = "You won!";
+            foreach (CardPlacePoint point in CardPointController.instance.enemyCardPoints)
             {
-                point.activeCard.MoveToPoint(discardPoint.position, point.activeCard.transform.rotation);
+                if (point.activeCard != null)
+                {
+                    point.activeCard.MoveToPoint(discardPoint.position, point.activeCard.transform.rotation);
+                }
+            }
+
+            GameManager.instance.CompleteLevel(currentLevelName);
+            GameManager.instance.AddCoins(winCoinsReward);
+        }
+        else
+        {
+            UIController.instance.battleResultText.text = "You lost!";
+            foreach (CardPlacePoint point in CardPointController.instance.playerCardPoints)
+            {
+                if (point.activeCard != null)
+                {
+                    point.activeCard.MoveToPoint(discardPoint.position, point.activeCard.transform.rotation);
+                }
             }
         }
-       
 
-        GameManager.instance.CompleteLevel(currentLevelName); // Ukończ poziom i zapisz jego stan
-        GameManager.instance.AddCoins(winCoinsReward);
+        StartCoroutine(ShowResultCo());
     }
-    else
-    {
-        UIController.instance.battleResultText.text = "You lost!";
-        foreach (CardPlacePoint point in CardPointController.instance.playerCardPoints)
-        {
-            if (point.activeCard != null)
-            {
-                point.activeCard.MoveToPoint(discardPoint.position, point.activeCard.transform.rotation);
-            }
-        }
-    }
-
-    StartCoroutine(ShowResultCo());
-}
 
     IEnumerator ShowResultCo()
     {
@@ -335,7 +345,6 @@ public class BattleController : MonoBehaviour
         UIController.instance.battleEndScreen.SetActive(true);
     }
 
-    // Metoda pomocnicza do ograniczenia zdrowia do maksymalnego zdrowia
     private void ClampHealth(bool isPlayer)
     {
         if (isPlayer)
@@ -373,10 +382,8 @@ public class BattleController : MonoBehaviour
     {
         Debug.Log($"IncreaseAttackPower called. isPlayer: {isPlayer}, increaseAmount: {increaseAmount}");
 
-        // Znajdź wszystkie karty w scenie
         Card[] allCards = FindObjectsOfType<Card>();
 
-        // Zwiększ moc ataku kart spełniających warunki
         foreach (Card card in allCards)
         {
             if (card.isPlayer == isPlayer && card.currentHealth > 0 && card.assignedPlace != null)

@@ -482,7 +482,7 @@ PrefabInstance:
     - target: {fileID: 7065923771000792160, guid: 99d1297b368d2804aa6c1ca0d155c556,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 349.8397
+      value: 347.13
       objectReference: {fileID: 0}
     - target: {fileID: 7065923771000792160, guid: 99d1297b368d2804aa6c1ca0d155c556,
         type: 3}
@@ -1475,11 +1475,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioMenager
       objectReference: {fileID: 0}
+    - target: {fileID: 8353034687789641560, guid: f75f61e532b6afb488c59f5f3010f8e2,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 68e5e1c2b260418469be97fe53472980, type: 3}
+    - target: {fileID: 8353034687789641560, guid: f75f61e532b6afb488c59f5f3010f8e2,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 68e5e1c2b260418469be97fe53472980, type: 3}
     - target: {fileID: 8855180890172265107, guid: f75f61e532b6afb488c59f5f3010f8e2,
         type: 3}
       propertyPath: bgm.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8855180890172265107, guid: f75f61e532b6afb488c59f5f3010f8e2,
+        type: 3}
+      propertyPath: battleSelectMusic
+      value: 
+      objectReference: {fileID: 2065143034}
     - target: {fileID: 8855180890172265107, guid: f75f61e532b6afb488c59f5f3010f8e2,
         type: 3}
       propertyPath: 'bgm.Array.data[0]'
@@ -1655,6 +1670,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 914720100}
   m_SourcePrefab: {fileID: 100100000, guid: 99d1297b368d2804aa6c1ca0d155c556, type: 3}
+--- !u!82 &2065143034 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8353034687789641560, guid: f75f61e532b6afb488c59f5f3010f8e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1608924428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2127906141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1934048417738405292, guid: 99d1297b368d2804aa6c1ca0d155c556,

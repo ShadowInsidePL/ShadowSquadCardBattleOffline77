@@ -8,6 +8,8 @@ public class BattleSelectButton : MonoBehaviour
     public string levelToLoad;
     public string requiredPreviousLevel; // Nazwa sceny poprzedniego poziomu, który trzeba ukończyć przed załadowaniem tej sceny
     public TextMeshProUGUI notificationText; // Tekst na ekranie
+    public int minimumDeckSize = 5; // Minimalna liczba kart w talii
+    public bool checkDeckSize = false; // Czy sprawdzać liczbę kart w talii
 
     void Start()
     {
@@ -43,6 +45,14 @@ public class BattleSelectButton : MonoBehaviour
         if (GameManager.instance == null)
         {
             Debug.LogError("GameManager.instance nie jest przypisany!");
+            return;
+        }
+
+        // Sprawdź liczbę kart w talii, jeśli checkDeckSize jest true
+        if (checkDeckSize && GameManager.instance.GetDeck().Count < minimumDeckSize)
+        {
+            Debug.Log("Musisz mieć co najmniej " + minimumDeckSize + " kart w talii, aby zagrać.");
+            ShowNotification("Musisz mieć co najmniej " + minimumDeckSize + " kart w talii, aby zagrać.");
             return;
         }
 
